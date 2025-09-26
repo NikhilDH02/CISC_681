@@ -74,25 +74,13 @@ h2_value = heuristic_sequence_distance(state, goal_state)
 - **Admissible**: Cars on wrong tracks need ≥1 move each
 - **Effective**: Better guidance for complex problems
 
-## Running Custom Test Cases
 
-### Testing on Predefined Yards
-```python
-# Run complete test suite (all problems)
-main()
-
-# Test individual functions
-test_problem1_complete()
-verify_assignment_examples()
-run_complete_performance_analysis()
-```
 
 ### Creating Custom Yards
 Add a new cell in the notebook:
 ```python
 # Define connectivity (track connections)
 CUSTOM_YARD = [(1, 2), (1, 3), (2, 4)]
-
 # Define states (list of cars on each track, indexed from 1)
 CUSTOM_INIT = [['*'], ['a'], ['b'], []]    # Engine on track 1, car 'a' on track 2, etc.
 CUSTOM_GOAL = [['*', 'a', 'b'], [], [], []] # All cars assembled on track 1
@@ -126,32 +114,6 @@ print("Nodes expanded:", nodes)
 - **YARD_1 with A* Tree**: High memory usage (may skip)
 - **YARD_2 with BFS**: ~185 seconds, 5M+ nodes
 
-## Example Usage
-
-### Complete Test Run
-```python
-# Run full test suite (as submitted)
-main()
-
-# Expected output includes:
-# - Problem 1-3 verification tests
-# - Algorithm performance comparisons  
-# - Speedup measurements
-# - Solution paths for each yard
-```
-
-### Individual Algorithm Testing
-
-```
-# Test BFS on simple problem
-bfs_solution, nodes = blind_search(YARD_3, INIT_STATE_3, GOAL_STATE_3, 'BFS')
-print("BFS solution:", bfs_solution)
-
-# Test A* with heuristic on complex problem  
-astar_solution, nodes = heuristic_graph_search(YARD_2, INIT_STATE_2, GOAL_STATE_2, 
-                                               heuristic_misplaced_cars)
-print("A* solution:", astar_solution)
-```
 
 ## Performance Results
 
