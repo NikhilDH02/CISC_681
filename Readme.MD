@@ -10,18 +10,6 @@ train_yard_search/
 ├── README.md                 # This file
 └── PR1.ipynb                # Complete implementation in Jupyter notebook
 ```
-
-## System Requirements
-- Python 3.7+ (Google Colab recommended)
-- Recommended: High-RAM runtime for larger problems (YARD_1, YARD_2)
-
-## Quick Start
-
-### Option 1: Google Colab (Recommended)
-1. Upload `PR1.ipynb` to Google Colab
-2. Set runtime to high-RAM if available (Runtime → Change runtime type → High-RAM)
-3. Run all cells in sequence
-
 ## Core Functions
 
 ### Problem 1: `possible_actions(yard, state)`
