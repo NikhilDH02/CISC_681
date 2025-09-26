@@ -1,4 +1,4 @@
-# Train Yard Search Assignment - CISC 481/681
+# Train Yard Search Assignment - CISC 681
 **Programming Assignment 1: Basic Blind/Heuristic Search Techniques**
 
 ## Overview
@@ -13,7 +13,6 @@ train_yard_search/
 
 ## System Requirements
 - Python 3.7+ (Google Colab recommended)
-- No external dependencies required
 - Recommended: High-RAM runtime for larger problems (YARD_1, YARD_2)
 
 ## Quick Start
@@ -21,13 +20,7 @@ train_yard_search/
 ### Option 1: Google Colab (Recommended)
 1. Upload `PR1.ipynb` to Google Colab
 2. Set runtime to high-RAM if available (Runtime → Change runtime type → High-RAM)
-3. Run all cells in sequence, or run the final cell to execute complete test suite
-
-### Option 2: Local Jupyter
-```bash
-jupyter notebook PR1.ipynb
-```
-Then run all cells or execute the main() function in the final cell.
+3. Run all cells in sequence
 
 ## Core Functions
 
@@ -37,21 +30,18 @@ Returns all legal actions possible from given state in given yard.
 actions = possible_actions(YARD_3, INIT_STATE_3)
 # Returns: [('RIGHT', 1, 2), ('RIGHT', 1, 3), ('LEFT', 2, 1), ('LEFT', 3, 1)]
 ```
-
 ### Problem 2: `result(action, state)` / `apply_move(action, state)`
 Applies an action to a state, returning the resulting new state.
 ```python
 new_state = apply_move(('LEFT', 2, 1), INIT_STATE_1)
 # Returns: [['*', 'e'], [], [], ['b', 'c', 'a'], [], ['d']]
 ```
-
 ### Problem 3: `expand(state, yard)`
 Returns all successor states reachable in one action from given state.
 ```python
 successors = expand(INIT_STATE_1, YARD_1)
 # Returns list of all possible next states
 ```
-
 ## Search Algorithms
 
 ### Problem 4: Breadth-First Search (BFS)
@@ -163,11 +153,8 @@ main()
 ```
 
 ### Individual Algorithm Testing
-```python
-from collections import deque
-import heapq
-import time
 
+```
 # Test BFS on simple problem
 bfs_solution, nodes = blind_search(YARD_3, INIT_STATE_3, GOAL_STATE_3, 'BFS')
 print("BFS solution:", bfs_solution)
@@ -178,7 +165,7 @@ astar_solution, nodes = heuristic_graph_search(YARD_2, INIT_STATE_2, GOAL_STATE_
 print("A* solution:", astar_solution)
 ```
 
-## Expected Performance Results
+## Performance Results
 
 Based on our testing:
 
@@ -193,53 +180,16 @@ Based on our testing:
 | YARD_2 | BFS | 14 | 5.3M | 161s | 1x |
 | YARD_2 | A* Graph | 14 | 972 | 0.025s | 5461x |
 
-## Troubleshooting
-
-### Common Issues:
-1. **Memory Error on Large Problems**: Use A* Graph Search instead of BFS/Tree
-2. **Slow Performance**: Start with simple yards (YARD_3-5) before complex ones
-3. **Wrong Results**: Verify your yard connectivity and state representations
-
-### Debug Mode:
-Add print statements in search functions for detailed output:
-```python
-def heuristic_graph_search_debug(yard, initial_state, goal_state, heuristic_func):
-    print(f"Starting search with heuristic: {heuristic_func.__name__}")
-    # ... rest of function with debug prints
-```
 
 ## Assignment Verification
 
 This implementation satisfies all assignment requirements:
-- ✅ Problems 1-7 implemented and tested
-- ✅ Required check-expect tests pass
-- ✅ Performance analysis exceeds 2-3x speedup requirement  
-- ✅ Handles all specified test yards
-- ✅ Proper algorithm justifications provided
-- ✅ Admissible heuristics with proofs
-
-## TA Testing Interface
-
-For easy testing of custom yards, use this helper function:
-```python
-def test_custom_yard(yard, init_state, goal_state):
-    """Simple interface for TA to test custom yards"""
-    print("Testing custom yard...")
-    solution, nodes = heuristic_graph_search(yard, init_state, goal_state, heuristic_misplaced_cars)
-    if solution:
-        print(f"Solution found: {len(solution)} moves")
-        print(f"Path: {solution}")
-        print(f"Nodes expanded: {nodes}")
-    else:
-        print("No solution found")
-    return solution
-
-# Example usage:
-# test_custom_yard([(1,2), (2,3)], [['*'], ['a'], ['b']], [['*','a','b'], [], []])
-```
-
-## Contact
-For questions about running this code, refer to the assignment documentation or test with the provided simple yards first to verify functionality.
+- roblems 1-7 implemented and tested
+- Required check-expect tests pass
+- Performance analysis exceeds 2-3x speedup requirement  
+- Handles all specified test yards
+- Proper algorithm justifications provided
+- Admissible heuristics with proofs
 
 ## Implementation Notes
 - All code is contained in the single Jupyter notebook PR1.ipynb
