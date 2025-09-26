@@ -74,23 +74,6 @@ h2_value = heuristic_sequence_distance(state, goal_state)
 - **Admissible**: Cars on wrong tracks need ≥1 move each
 - **Effective**: Better guidance for complex problems
 
-
-
-### Creating Custom Yards
-Add a new cell in the notebook:
-```python
-# Define connectivity (track connections)
-CUSTOM_YARD = [(1, 2), (1, 3), (2, 4)]
-# Define states (list of cars on each track, indexed from 1)
-CUSTOM_INIT = [['*'], ['a'], ['b'], []]    # Engine on track 1, car 'a' on track 2, etc.
-CUSTOM_GOAL = [['*', 'a', 'b'], [], [], []] # All cars assembled on track 1
-
-# Test your custom yard
-solution, nodes = heuristic_graph_search(CUSTOM_YARD, CUSTOM_INIT, CUSTOM_GOAL, heuristic_misplaced_cars)
-print("Solution path:", solution)
-print("Nodes expanded:", nodes)
-```
-
 ## Predefined Test Cases
 
 ### Simple Test Cases (Start Here!)
